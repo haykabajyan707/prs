@@ -1,0 +1,59 @@
+repositories {
+    mavenLocal()
+    maven { url "https://repo.grails.org/grails/core" }
+    maven { url 'http://dl.bintray.com/agorapulse/libs' }
+    maven { url "http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts"}
+}
+
+
+dependencies {
+    compile "com.fipsoft:fips-api:0.0.30"
+    compile "com.fipsoft:fips-security-cas:30.0.0-rc23"
+    compile "com.fipsoft:fips-platform-api:30.0.0"
+    compile "com.fipsoft:fips-workflow-statemachine:30.0.1"
+    compile "com.fipsoft:fips-layout-core:30.0.3"
+    compile "com.fipsoft:fips-conversation:30.0.0"
+    compile "com.fipsoft:fips-taglibs:30.0.2"
+    compile "com.fipsoft:fips-rims:30.0.10"
+    compile("com.fipsoft:fips-brm:30.0.2")
+    compile "com.fipsoft:fips-jslibs:30.0.0"
+    compile "com.fipsoft:fips-task:30.0.4"
+    compile "com.fipsoft:fips-cap:30.0.1"
+    compile "com.fipsoft:fips-rms:30.0.0"
+    compile "com.fipsoft:fips-uata:30.0.8"
+    compile "com.fipsoft:fips-jasper:30.0.0"
+    compile "com.fipsoft:fips-tdc:30.0.0"
+    compile "com.fipsoft:fips-domaudit:30.0.0"
+    compile "com.fipsoft:fips-converters:30.0.2"
+    compile("com.fipsoft:fips-constraints:30.0.0") {
+        exclude module: 'fips-api'
+    }
+
+    compile "com.fipsoft:fips-request:1.0.7"
+    compile "com.fipsoft:fips-fields:1.0.0"
+}
+
+
+bootRun {
+    jvmArgs('-Dspring.output.ansi.enabled=always')
+    addResources = true
+}
+
+
+assets {
+    minifyJs = true
+    minifyCss = true
+
+    minifyOptions = [
+            languageMode     : 'ES6',
+            targetLanguage   : 'ES5',
+            optimizationLevel: 'SIMPLE',
+    ]
+}
+
+
+sourceSets.main.java.srcDirs = []
+sourceSets.main.groovy.srcDirs += ["src/main/java"]
+
+
+defaultTasks 'clean'
