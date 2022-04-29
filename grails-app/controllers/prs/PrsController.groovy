@@ -5,7 +5,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_PRS_OFFICER', 'ROLE_PRS_PERSON', 'ROLE_PRS_CHIEF_OFFICER', 'ROLE_PRS_MANAGER'])
 class PrsController {
 
-    PrsService prsService
+    PrsService  prsService
 
     def index() {
         def response = prsService.list(params)
